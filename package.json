@@ -1,0 +1,22 @@
+{
+  "name": "nexxess-plaid-widget",
+  "version": "1.0.0",
+  "description": "plaid_widget",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Admin-Nexxess/plaid_widget.git"
+  },
+  "author": "Ronnie Serr",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Admin-Nexxess/plaid_widget/issues"
+  },
+  "homepage": "https://github.com/Admin-Nexxess/plaid_widget#readme",
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
