@@ -1,4 +1,4 @@
-console.log("v440 site: widget.nexusplaid.xyz repo: https://github.com/IBG-Books/nexusplaid.xyz.git branch: widget6 062823 10:24am");
+console.log("v500 site: widget.accountingtech.co repo: https://github.com/Admin-Nexxess/plaid_widget.git branch: widget 053124 1030");
 
 let connected_bank_accounts_url;
 
