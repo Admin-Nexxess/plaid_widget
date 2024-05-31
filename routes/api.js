@@ -8,18 +8,7 @@ router.get('/allowed_domains', function(req, res, next) {
 });
 
 //  Sandbox
-// const PLAID_CLIENT_ID="5ea76b61d1ed690013985bce";
-// const PLAID_SECRET="dd5dcaf032281a85d98a283e8392d0";
-// const PLAID_PUBLIC_KEY="8ab1455eb8c89ce7d39e7074b27139";
-// const PLAID_PRODUCTS="transactions";
-// const PLAID_COUNTRY_CODES="US";
-// const PLAID_ENV="sandbox";
 
-const PLAID_CLIENT_ID="5ea76b61d1ed690013985bce";
-const PLAID_SECRET="7ba01e5cc5d28471f0a9ad42cfd4ad";
-const PLAID_ENV="development";
-const PLAID_PRODUCTS="transactions";
-const PLAID_COUNTRY_CODES="US,CA";
 
 var util = require('util');
 

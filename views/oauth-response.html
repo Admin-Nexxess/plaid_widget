@@ -19,7 +19,7 @@
       receivedRedirectUri: window.location.href,
       onSuccess: function(public_token) {
         $.post('/api/set_access_token', {public_token: public_token}, function(data) {
-          location.href = 'https://dev2.nexusplaid.xyz';
+          location.href = 'https://widget.accountingtech.co';
         })
       },
     });
