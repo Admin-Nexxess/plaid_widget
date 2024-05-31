@@ -101,7 +101,7 @@ async function updateItem(payload, metadata) {
         // }
 
         var config = {
-            appName : "scarlett-2-0",
+            appName : "nexxsuite",
         reportName : "All_Plaid_Items",
         id: queryParams.plaid_item_record_id,
         data : formData
