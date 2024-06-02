@@ -126,7 +126,7 @@ app.post('/api/create_link_token', async function (request, response) {
       // This should correspond to a unique id for the current user.
       client_user_id: request.body.contact_id,
     },
-    client_name: 'Scarlett Books Plaid Link',  
+    client_name: 'NexxSuite Plaid Link',  
     access_token: request.body.access_token,
     products: plaid_products,
     country_codes: PLAID_COUNTRY_CODES,
