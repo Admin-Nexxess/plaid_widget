@@ -1,31 +1,42 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<title>Plaid Quickstart OAuth Response Page Example</title>
-<link rel="stylesheet" href="https://threads.plaid.com/threads.css">
+<!-- oauth.html – Handles the OAuth flow. Re-initializes Link in the body via a script, then redirects to the home page. -->
+<html>
+  <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
+    <title>Plaid | Minimal Quickstart</title>
+  </head>
+  <body>
+    <script src="https://cdn.plaid.com/link/v2/stable/link-initialize.js"></script>
+    <script>
+      (($) => {
+        const linkToken = localStorage.getItem("link_token");
 
-<link rel="stylesheet" type="text/css" href="static/style.css">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-</head>
-<body>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
-  <script src="https://cdn.plaid.com/link/v2/stable/link-initialize.js"></script>
-  <script>
-  (function($) {
-    var linkToken = localStorage.getItem('link_token');
-    var handler = Plaid.create({
-      token: linkToken,
-      receivedRedirectUri: window.location.href,
-      onSuccess: function(public_token) {
-        $.post('/api/set_access_token', {public_token: public_token}, function(data) {
-          location.href = 'https://widget.accountingtech.co';
-        })
-      },
-    });
-    handler.open();
-  })(jQuery);
-  </script>
-</body>
+        const handler = Plaid.create({
+          token: linkToken,
+          receivedRedirectUri: window.location.href,
+          onSuccess: async (publicToken, metadata) => {
+            await fetch("/api/exchange_public_token", {
+              method: "POST",
+              body: JSON.stringify({ public_token: publicToken }),
+              headers: {
+                "Content-Type": "application/json",
+              },
+            });
+            const response = await fetch('/api/data', {
+              method: 'GET',
+            });
+            const data = await response.json();
+            window.location.href = "http://localhost:8080";          
+          },
+          onEvent: (eventName, metadata) => {
+            console.log("Event:", eventName);
+            console.log("Metadata:", metadata);
+          },
+          onExit: (error, metadata) => {
+            console.log(error, metadata);
+          },
+        });
+        handler.open();
+      })(jQuery);
+    </script>
+  </body>
 </html>
-
