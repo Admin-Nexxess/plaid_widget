@@ -21,6 +21,13 @@ app.use(
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*"); // Update to your Retool origin
+  res.header("Access-Control-Allow-Methods", "GET,POST,PUT,DELETE");
+  res.header("Access-Control-Allow-Headers", "Content-Type");
+  next();
+});
+
 app.get("/", async (req, res) => {
   res.sendFile(path.join(__dirname, "./views/index.html"));
 });
